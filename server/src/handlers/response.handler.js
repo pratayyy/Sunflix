@@ -1,14 +1,13 @@
-const responseWithData = (req, statusCode, next) => {
+const responseWithData = (res, statusCode, data) =>
   res.status(statusCode).json(data);
-};
 
 const error = (res) =>
   responseWithData(res, 500, {
     status: 500,
-    message: "Oops! Something went wrong!",
+    message: "Oops! Something worng!",
   });
 
-const badrequest = (res) =>
+const badrequest = (res, message) =>
   responseWithData(res, 400, {
     status: 400,
     message,
@@ -21,7 +20,7 @@ const created = (res, data) => responseWithData(res, 201, data);
 const unauthorize = (res) =>
   responseWithData(res, 401, {
     status: 401,
-    message: "Unauthorized",
+    message: "Unathorized",
   });
 
 const notfound = (res) =>
